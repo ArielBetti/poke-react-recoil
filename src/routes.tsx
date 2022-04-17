@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
 // pages
-import { Home } from "./pages";
+import { Home, Pokemon } from "./pages";
 
 const AppRouter = () => {
   return (
@@ -10,7 +10,9 @@ const AppRouter = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/pokemon" element={<div>Pokemon</div>} />
+          <Route path="/pokemon" element={<Pokemon />}>
+            <Route path=":pokemon" />
+          </Route>
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

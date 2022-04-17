@@ -5,13 +5,11 @@ import environment from "../environments/environment";
 
 export const getAllSeasonOnePokemons = selectorFamily({
   key: "AllSeasonOnePokemons",
-  get:
-    (pokemon: string) =>
-    async () => {
-      const { data } = await requester({
-        baseURL: environment.POKEAPI_BASE_URL,
-      }).get(DEFAULT_POKEMONS_ENDPOINT(pokemon));
+  get: (pokemon: string) => async () => {
+    const { data } = await requester({
+      baseURL: environment.POKEAPI_BASE_URL,
+    }).get(DEFAULT_POKEMONS_ENDPOINT(pokemon));
 
-      return data;
-    },
+    return data;
+  },
 });

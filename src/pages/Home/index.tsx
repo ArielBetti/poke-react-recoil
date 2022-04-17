@@ -1,16 +1,15 @@
 import { FC, ReactElement, useEffect } from "react";
-import {
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-} from "@mui/material";
+import { useNavigate } from "react-router";
+import { ListItemAvatar, Avatar, ListItemText, Stack } from "@mui/material";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import { atomPokemonList } from "../../state/atoms";
 import { getAllSeasonOnePokemons } from "../../state/selectors";
 
-import * as Atom from './atoms';
+import * as Atom from "./atoms";
 
 const Home: FC<any> = (): ReactElement => {
+  const navigate = useNavigate();
+
   const [pokemonDefaultList, setPokemonDefaultList] =
     useRecoilState(atomPokemonList);
   const loadablePokemonList = useRecoilValueLoadable(
@@ -31,13 +30,21 @@ const Home: FC<any> = (): ReactElement => {
   }
 
   return (
-    <Atom.ContainerWrapper>
-      <Atom.ListWrapper>
-        {pokemonDefaultList?.map((item: any, index: number) => (
-          <Atom.ListItemWrapper key={item.name}>
+    <Stack
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      flexWrap="wrap"
+    >
+      {pokemonDefaultList?.map((item: any, index: number) => (
+        <Stack margin={1}>
+          <Atom.ListItemWrapper
+            key={item.name}
+            onClick={() => navigate(`/pokemon/${item.name}`)}
+          >
             <ListItemAvatar>
               <Avatar
-                sx={{ backgroundColor: '#f5f5f5' }}
+                sx={{ backgroundColor: "#f5f5f5" }}
                 src={`https://cdn.traction.one/pokedex/pokemon/${
                   index + 1
                 }.png`}
@@ -45,9 +52,9 @@ const Home: FC<any> = (): ReactElement => {
             </ListItemAvatar>
             <ListItemText primary={item.name} />
           </Atom.ListItemWrapper>
-        ))}
-      </Atom.ListWrapper>
-    </Atom.ContainerWrapper>
+        </Stack>
+      ))}
+    </Stack>
   );
 };
 
