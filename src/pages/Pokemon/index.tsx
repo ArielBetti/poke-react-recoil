@@ -53,30 +53,34 @@ const Pokemon: FC<any> = (): ReactElement => {
   if (loadablePokemon.state === "loading") return <Loader />;
 
   if (loadablePokemon.state === "hasError")
-    return (
-      <Container>
-        <Stack
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          flexWrap="wrap"
-          spacing={3}
-          paddingY={3}
-        >
-          <Typography variant="h5" color={`${theme.palette?.text.primary}`}>
-            Ocorreu um erro :/
-          </Typography>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={() => retryLoadablePokemon()}
-            startIcon={<RefreshOutlined />}
+    if (loadablePokemon.contents?.response?.status === 404) {
+      navigate("/");
+    } else {
+      return (
+        <Container>
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            flexWrap="wrap"
+            spacing={3}
+            paddingY={3}
           >
-            Tentar novamente
-          </Button>
-        </Stack>
-      </Container>
-    );
+            <Typography variant="h5" color={`${theme.palette?.text.primary}`}>
+              Ocorreu um erro :/
+            </Typography>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => retryLoadablePokemon()}
+              startIcon={<RefreshOutlined />}
+            >
+              Tentar novamente
+            </Button>
+          </Stack>
+        </Container>
+      );
+    };
 
   return (
     <Container>
