@@ -1,20 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-* {
-  --primary-color: #fafafa;
-  --light-color: #ffffff;
-  --dark-color: rgba(174, 174, 192, 0.4);
-}
-
 body {
-
+  min-height: 100vh;
   margin: 0;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary-color);
 }
 
 code {

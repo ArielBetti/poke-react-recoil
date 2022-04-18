@@ -1,11 +1,16 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const atomPokemonList = atom<any>({
-  key: 'PokemonList',
+  key: "PokemonList",
   default: undefined,
 });
 
 export const atomPokemon = atom<any>({
-  key: 'Pokemon',
+  key: "Pokemon",
   default: undefined,
+});
+
+export const atomDarkTheme = atom<any>({
+  key: "DarkTheme",
+  default: false,
 });

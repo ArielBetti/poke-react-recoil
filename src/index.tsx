@@ -1,18 +1,22 @@
-import { Container } from "@mui/material";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import AppRouter from "./routes";
+import View from "./View/app";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <Container>
-      <AppRouter />
-    </Container>
+    <RecoilRoot>
+      <View>
+        <AppRouter />
+      </View>
+    </RecoilRoot>
   </React.StrictMode>
 );
 
