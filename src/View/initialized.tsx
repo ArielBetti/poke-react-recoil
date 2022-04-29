@@ -10,6 +10,7 @@ import AppRouter from "../routes";
 const Initialized = (): ReactElement => {
   const [prefersDarkMode, setPrefersDarkMode] = useRecoilState(atomDarkTheme);
 
+  // TODO: Encontrar maneira melhor de manipular estado do dark-mode
   useEffect(() => {
     const isDarker: any = localStorage.getItem("darkMode");
     if (isDarker) {
